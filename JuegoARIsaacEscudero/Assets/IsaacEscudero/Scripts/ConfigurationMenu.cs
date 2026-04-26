@@ -87,5 +87,4 @@ public class ConfigurationMenu : MonoBehaviour
         return oclusionActivada;
     }
     #endregion
-    // Update is called once per frame
 }
