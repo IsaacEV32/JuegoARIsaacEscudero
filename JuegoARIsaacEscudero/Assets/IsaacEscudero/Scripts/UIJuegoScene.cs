@@ -1,4 +1,5 @@
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.XR.ARFoundation;
@@ -10,6 +11,19 @@ public class UIJuegoScene : MonoBehaviour
     [SerializeField] TMP_Text textoTiempo;
     [SerializeField] TMP_Text textoGemas;
     float gemasPilladas = 0;
+    float gemasTotales;
+    public static UIJuegoScene instance;
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(this);
+        }
+    }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Start()
     {
@@ -28,11 +42,21 @@ public class UIJuegoScene : MonoBehaviour
     {
         float minutes = Mathf.FloorToInt(tiempo / 60);
         float seconds = Mathf.FloorToInt(tiempo % 60);
+        gemasTotales = gemasHorizontales + gemasVerticales;
         textoTiempo.text = string.Format("{0:00}:{1:00}", minutes, seconds);
-        textoGemas.text = gemasPilladas.ToString() + " / " + (gemasHorizontales + gemasVerticales).ToString();
+        textoGemas.text = gemasPilladas.ToString() + " / " + gemasTotales.ToString();
     }
     internal Canvas GetJuegoGemasCanvas()
     {
         return canvasJuego;
+    }
+    internal void ActualizarGemasPilladas()
+    {
+        gemasPilladas++;
+        textoGemas.text = gemasPilladas.ToString() + " / " + gemasTotales.ToString();
+    }
+    internal float GetGemasTotales()
+    {
+        return gemasTotales;
     }
 }

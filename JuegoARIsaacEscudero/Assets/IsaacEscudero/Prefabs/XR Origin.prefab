@@ -48,6 +48,8 @@ GameObject:
   - component: {fileID: 503495129819649726}
   - component: {fileID: 3464905758453551394}
   - component: {fileID: 1187117286485473206}
+  - component: {fileID: 1816976567943277646}
+  - component: {fileID: 5135700007462463145}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -327,6 +329,40 @@ MonoBehaviour:
   m_EnvironmentDepthMode: 1
   m_EnvironmentDepthTemporalSmoothing: 1
   m_OcclusionPreferenceMode: 0
+--- !u!114 &1816976567943277646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6486168637608915661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 507f04c5355c19e488f89cb4d5d23158, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Gemas
+  layerGemas: 3
+--- !u!65 &5135700007462463145
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6486168637608915661}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &9117919753493297650
 GameObject:
   m_ObjectHideFlags: 0
@@ -536,7 +572,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8917308293266842417, guid: ba5c3c37e4eb53345af4472de2987b47, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 9205518162998651047}
   m_SourcePrefab: {fileID: 100100000, guid: ba5c3c37e4eb53345af4472de2987b47, type: 3}
 --- !u!114 &2679298180503485543 stripped
 MonoBehaviour:
@@ -549,6 +588,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+--- !u!1 &5822369565092820165 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8917308293266842417, guid: ba5c3c37e4eb53345af4472de2987b47, type: 3}
+  m_PrefabInstance: {fileID: 3102297213304805364}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &9205518162998651047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5822369565092820165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f16dd5eccc5275a46a174b41feb18ecb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GenerarGemas
+  gema: {fileID: 8500298984030011806, guid: 8bb5052d1d18a6b428e715405c98b960, type: 3}
 --- !u!223 &7283669282460933092 stripped
 Canvas:
   m_CorrespondingSourceObject: {fileID: 5627626515219188752, guid: ba5c3c37e4eb53345af4472de2987b47, type: 3}
