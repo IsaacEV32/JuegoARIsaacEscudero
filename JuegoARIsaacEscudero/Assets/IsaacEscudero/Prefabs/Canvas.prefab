@@ -1948,6 +1948,7 @@ MonoBehaviour:
   sliderTiempo: {fileID: 2357097240811481687}
   textoTiempo: {fileID: 1970324241361034239}
   indiceNivelJuego: 1
+  aROcclusionManager: {fileID: 0}
 --- !u!1 &7714429283717562504
 GameObject:
   m_ObjectHideFlags: 0

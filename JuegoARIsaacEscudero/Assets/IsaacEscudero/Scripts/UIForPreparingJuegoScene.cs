@@ -2,18 +2,22 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
-using System.Collections.Generic;
 public class UIForPreparingJuegoScene : MonoBehaviour
 {
     ARPlaneManager aRPlaneManager;
+    ConfigurationMenu configurationMenu;
     [SerializeField]TMP_Text textForHorizontalPlanesDetected;
     [SerializeField]TMP_Text textForVerticalPlanesDetected;
     int horizontalPlanes;
     int verticalPlanes;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    float horizontalPlanesMin;
+    float verticalPlanesMin;
+    private void Awake()
     {
         aRPlaneManager = GetComponent<ARPlaneManager>();
+        configurationMenu = GetComponentInChildren<ConfigurationMenu>();
+        horizontalPlanesMin = configurationMenu.GetPlanosHorizontalesMaximos();
+        verticalPlanesMin = configurationMenu.GetPlanosVerticalesMaximos();
     }
     public void PlanesDetected(ARTrackablesChangedEventArgs<ARPlane> arPlanes)
     {
@@ -33,13 +37,7 @@ public class UIForPreparingJuegoScene : MonoBehaviour
                 verticalPlanes++;
             }
         }
-        textForHorizontalPlanesDetected.text = "Planos horizontales: " + " " + horizontalPlanes;
-        textForVerticalPlanesDetected.text = "Planos verticales: " + " " + verticalPlanes;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        textForHorizontalPlanesDetected.text = "Planos horizontales: " + " " + horizontalPlanes + " / " + horizontalPlanesMin;
+        textForVerticalPlanesDetected.text = "Planos verticales: " + " " + verticalPlanes + " / " + verticalPlanesMin;
     }
 }

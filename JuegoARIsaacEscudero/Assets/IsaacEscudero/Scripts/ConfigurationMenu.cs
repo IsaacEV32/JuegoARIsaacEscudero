@@ -1,5 +1,4 @@
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -12,15 +11,27 @@ public class ConfigurationMenu : MonoBehaviour
     [SerializeField] TMP_Text textoPlanosVerticales;
     [SerializeField] Slider sliderTiempo;
     [SerializeField] TMP_Text textoTiempo;
-    static bool oclusionActivada;
+    static bool oclusionActivada = true;
     static float planosHorizontales;
     static float planosVerticales;
     static float tiempo;
     [SerializeField] int indiceNivelJuego;
     Canvas canvas;
+    [SerializeField] AROcclusionManager aROcclusionManager;
     private void Awake()
     {
+        if (oclusionActivada)
+        {
+            aROcclusionManager.enabled = true;
+        }
+        else
+        {
+            aROcclusionManager.enabled = false;
+        }
         canvas = GetComponent<Canvas>();
+    }
+    private void Start()
+    {
         if (SceneManager.GetActiveScene().buildIndex != 0)
         {
             canvas.enabled = false;
@@ -30,17 +41,22 @@ public class ConfigurationMenu : MonoBehaviour
             canvas.enabled = true;
         }
     }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public void HorizontalPlanesDetected(float hPlane)
     {
-        sliderHorizontalPlanes.onValueChanged.AddListener((v) => { textoPlanosHorizontales.text = v.ToString("Numero de planos horizontales: " + " 0"); });
-        sliderVerticalPlanes.onValueChanged.AddListener((v) => { textoPlanosVerticales.text = v.ToString("Numero de planos verticales: " + " 0"); });
+        textoPlanosHorizontales.text = "Numero de planos horizontales: " + hPlane;
+        planosHorizontales = hPlane;
+    }
+    public void VerticalPlanesDetected(float vPlane)
+    {
+        textoPlanosVerticales.text = "Numero de planos horizontales: " + vPlane;
+        planosVerticales = vPlane;
     }
     public void DisplayTime(float time)
     {
         float minutes = Mathf.FloorToInt(time / 60);
         float seconds = Mathf.FloorToInt(time % 60);
         textoTiempo.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        tiempo = time;
     }
     public void IsOclusionActivated(bool activado)
     {
@@ -53,9 +69,23 @@ public class ConfigurationMenu : MonoBehaviour
         LoaderUtility.Initialize();
         SceneManager.LoadScene(indiceNivelJuego);
     }
-    // Update is called once per frame
-    void Update()
+    #region Getters
+    internal float GetPlanosHorizontalesMaximos()
     {
-
+        return planosHorizontales; 
     }
+    internal float GetPlanosVerticalesMaximos()
+    {
+        return planosVerticales;
+    }
+    internal float GetTiempo()
+    {
+        return tiempo;
+    }
+    internal bool GetOclusion()
+    {
+        return oclusionActivada;
+    }
+    #endregion
+    // Update is called once per frame
 }
