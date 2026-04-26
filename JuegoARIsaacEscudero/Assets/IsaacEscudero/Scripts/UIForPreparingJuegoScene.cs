@@ -75,7 +75,7 @@ public class UIForPreparingJuegoScene : MonoBehaviour
         {
             botonParaJugar.gameObject.SetActive(true);
         }
-        else if (horizontalPlanes < horizontalPlanesMin && verticalPlanes < verticalPlanesMin)
+        else if (horizontalPlanes < horizontalPlanesMin || verticalPlanes < verticalPlanesMin)
         {
             botonParaJugar.gameObject.SetActive(false);
         }
