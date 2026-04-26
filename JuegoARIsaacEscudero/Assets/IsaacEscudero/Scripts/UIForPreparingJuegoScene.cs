@@ -9,14 +9,17 @@ public class UIForPreparingJuegoScene : MonoBehaviour
     ARPlaneManager aRPlaneManager;
     ConfigurationMenu configurationMenu;
     UIJuegoScene juegoGemas;
-    [SerializeField]TMP_Text textForHorizontalPlanesDetected;
-    [SerializeField]TMP_Text textForVerticalPlanesDetected;
+    [SerializeField] TMP_Text textForHorizontalPlanesDetected;
+    [SerializeField] TMP_Text textForVerticalPlanesDetected;
     [SerializeField] Canvas canvas;
     [SerializeField] Button botonParaJugar;
     int horizontalPlanes;
     int verticalPlanes;
     float horizontalPlanesMin;
     float verticalPlanesMin;
+    float tiempoJuego;
+    bool estaLaOclusionActivada;
+    [SerializeField] AROcclusionManager aROcclusionManager;
     private void Awake()
     {
         aRPlaneManager = GetComponent<ARPlaneManager>();
@@ -24,6 +27,16 @@ public class UIForPreparingJuegoScene : MonoBehaviour
         juegoGemas = GetComponent<UIJuegoScene>();
         horizontalPlanesMin = configurationMenu.GetPlanosHorizontalesMaximos();
         verticalPlanesMin = configurationMenu.GetPlanosVerticalesMaximos();
+        tiempoJuego = configurationMenu.GetTiempo();
+        estaLaOclusionActivada = configurationMenu.GetOclusion();
+        if (estaLaOclusionActivada)
+        {
+            aROcclusionManager.enabled = true;
+        }
+        else
+        {
+            aROcclusionManager.enabled = false;
+        }
         botonParaJugar.gameObject.SetActive(false);
         if (SceneManager.GetActiveScene().buildIndex != 1)
         {
@@ -69,6 +82,7 @@ public class UIForPreparingJuegoScene : MonoBehaviour
     {
         canvas.enabled = false;
         juegoGemas.GetJuegoGemasCanvas().enabled = true;
+        juegoGemas.SetParametrosEnJuegoGemas(horizontalPlanesMin, verticalPlanesMin, tiempoJuego);
     }
     internal Canvas GetCanvasPrepararJuego()
     {
