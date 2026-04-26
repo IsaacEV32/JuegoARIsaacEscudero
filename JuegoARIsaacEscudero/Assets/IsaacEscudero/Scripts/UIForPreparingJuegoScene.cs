@@ -18,11 +18,12 @@ public class UIForPreparingJuegoScene : MonoBehaviour
     public void PlanesDetected(ARTrackablesChangedEventArgs<ARPlane> arPlanes)
     {
         horizontalPlanes = 0;
+        verticalPlanes = 0;
         foreach (ARPlane plane in aRPlaneManager.trackables)
         {
             // Solo contamos los que están siendo rastreados y son horizontales
             if (plane.trackingState != TrackingState.None &&
-               (plane.alignment == PlaneAlignment.HorizontalUp || plane.alignment == PlaneAlignment.HorizontalDown))
+               (plane.alignment == PlaneAlignment.HorizontalUp))
             {
                 horizontalPlanes++;
             }
