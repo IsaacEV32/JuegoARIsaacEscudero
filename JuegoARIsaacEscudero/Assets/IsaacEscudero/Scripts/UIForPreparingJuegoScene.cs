@@ -8,6 +8,7 @@ public class UIForPreparingJuegoScene : MonoBehaviour
 {
     ARPlaneManager aRPlaneManager;
     ConfigurationMenu configurationMenu;
+    UIJuegoScene juegoGemas;
     [SerializeField]TMP_Text textForHorizontalPlanesDetected;
     [SerializeField]TMP_Text textForVerticalPlanesDetected;
     [SerializeField] Canvas canvas;
@@ -20,12 +21,10 @@ public class UIForPreparingJuegoScene : MonoBehaviour
     {
         aRPlaneManager = GetComponent<ARPlaneManager>();
         configurationMenu = GetComponentInChildren<ConfigurationMenu>();
+        juegoGemas = GetComponent<UIJuegoScene>();
         horizontalPlanesMin = configurationMenu.GetPlanosHorizontalesMaximos();
         verticalPlanesMin = configurationMenu.GetPlanosVerticalesMaximos();
         botonParaJugar.gameObject.SetActive(false);
-    }
-    private void Start()
-    {
         if (SceneManager.GetActiveScene().buildIndex != 1)
         {
             canvas.enabled = false;
@@ -65,5 +64,14 @@ public class UIForPreparingJuegoScene : MonoBehaviour
         {
             botonParaJugar.gameObject.SetActive(false);
         }
+    }
+    public void Jugar()
+    {
+        canvas.enabled = false;
+        juegoGemas.GetJuegoGemasCanvas().enabled = true;
+    }
+    internal Canvas GetCanvasPrepararJuego()
+    {
+        return canvas;
     }
 }
