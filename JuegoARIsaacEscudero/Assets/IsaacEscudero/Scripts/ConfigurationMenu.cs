@@ -12,9 +12,9 @@ public class ConfigurationMenu : MonoBehaviour
     [SerializeField] Slider sliderTiempo;
     [SerializeField] TMP_Text textoTiempo;
     static bool oclusionActivada = true;
-    static float planosHorizontales;
-    static float planosVerticales;
-    static float tiempo;
+    static float planosHorizontales = 1;
+    static float planosVerticales = 1;
+    static float tiempo = 60;
     [SerializeField] int indiceNivelJuego;
     Canvas canvas;
     [SerializeField] AROcclusionManager aROcclusionManager;
@@ -48,14 +48,14 @@ public class ConfigurationMenu : MonoBehaviour
     }
     public void VerticalPlanesDetected(float vPlane)
     {
-        textoPlanosVerticales.text = "Numero de planos horizontales: " + vPlane;
+        textoPlanosVerticales.text = "Numero de planos verticales: " + vPlane;
         planosVerticales = vPlane;
     }
     public void DisplayTime(float time)
     {
         float minutes = Mathf.FloorToInt(time / 60);
         float seconds = Mathf.FloorToInt(time % 60);
-        textoTiempo.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        textoTiempo.text = "Tiempo: " + string.Format("{0:00}:{1:00}", minutes, seconds);
         tiempo = time;
     }
     public void IsOclusionActivated(bool activado)
@@ -72,7 +72,7 @@ public class ConfigurationMenu : MonoBehaviour
     #region Getters
     internal float GetPlanosHorizontalesMaximos()
     {
-        return planosHorizontales; 
+        return planosHorizontales;
     }
     internal float GetPlanosVerticalesMaximos()
     {

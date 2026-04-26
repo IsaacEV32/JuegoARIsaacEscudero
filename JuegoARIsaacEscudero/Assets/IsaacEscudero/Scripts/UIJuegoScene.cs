@@ -74,6 +74,10 @@ public class UIJuegoScene : MonoBehaviour
             }
             else if (tiempo < 0)
             {
+                tiempo = 0;
+                float minutes = Mathf.FloorToInt(tiempo / 60);
+                float seconds = Mathf.FloorToInt(tiempo % 60);
+                textoTiempo.text = string.Format("{0:00}:{1:00}", minutes, seconds);
                 chronometerActive = false;
                 textoFinalDelJuego.text = "Mala suerte jugador, perdiste";
                 botonVolverAlMenu.gameObject.SetActive(true);
@@ -82,6 +86,7 @@ public class UIJuegoScene : MonoBehaviour
     }
     public void RegresarAlMenu()
     {
+        AudioManager.instance.StopAllAudioSources();
         LoaderUtility.Deinitialize();
         LoaderUtility.Initialize();
         SceneManager.LoadScene(indiceMenu);

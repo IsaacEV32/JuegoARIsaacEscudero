@@ -57,7 +57,7 @@ public class UIForPreparingJuegoScene : MonoBehaviour
         verticalPlanes = 0;
         foreach (ARPlane plane in aRPlaneManager.trackables)
         {
-            // Solo contamos los que están siendo rastreados y son horizontales
+            //Solo contamos los que estan siendo rastreados y son horizontales
             if (plane.trackingState != TrackingState.None &&
                (plane.alignment == PlaneAlignment.HorizontalUp))
             {
@@ -86,6 +86,8 @@ public class UIForPreparingJuegoScene : MonoBehaviour
         juegoGemas.GetJuegoGemasCanvas().enabled = true;
         juegoGemas.SetParametrosEnJuegoGemas(horizontalPlanesMin, verticalPlanesMin, tiempoJuego);
         generarGemas.SetGemasInScene();
+        AudioManager.instance.enabled = true;
+        AudioManager.instance.PlayBackgroundMusic();
     }
     internal Canvas GetCanvasPrepararJuego()
     {

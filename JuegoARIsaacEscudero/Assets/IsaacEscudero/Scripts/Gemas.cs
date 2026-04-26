@@ -8,6 +8,7 @@ public class Gemas : MonoBehaviour
         if (collision.gameObject.layer == layerGemas)
         {
             UIJuegoScene.instance.ActualizarGemasPilladas();
+            AudioManager.instance.PlayPickSoundEffect();
             collision.gameObject.SetActive(false);
         }
     }
