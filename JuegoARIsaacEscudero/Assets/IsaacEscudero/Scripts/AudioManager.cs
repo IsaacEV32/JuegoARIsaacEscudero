@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
+    #region Atributos
     //Audio Sources donde saldran los clips
     [SerializeField] AudioSource audioSourceBackgroundMusic;
     [SerializeField] AudioSource audioSourceSFX;
@@ -13,6 +14,8 @@ public class AudioManager : MonoBehaviour
     UIForPreparingJuegoScene uIPrep;
     //Variable usada para singelton
     public static AudioManager instance;
+    #endregion
+    #region Funciones de UNity
     private void Awake()
     {
         if (instance == null)
@@ -33,6 +36,8 @@ public class AudioManager : MonoBehaviour
             this.enabled = false;
         }
     }
+    #endregion
+    #region Funciones del AudioManager
     //Funciones para reproducir musica y efectos de sonido
     internal void PlayBackgroundMusic()
     {
@@ -48,4 +53,5 @@ public class AudioManager : MonoBehaviour
         audioSourceBackgroundMusic.Stop();
         audioSourceSFX.Stop();
     }
+    #endregion
 }
