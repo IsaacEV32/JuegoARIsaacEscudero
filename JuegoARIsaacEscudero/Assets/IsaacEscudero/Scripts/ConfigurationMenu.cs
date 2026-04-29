@@ -28,9 +28,6 @@ public class ConfigurationMenu : MonoBehaviour
     private void Awake()
     {
         canvas = GetComponent<Canvas>();
-    }
-    private void Start()
-    {
         //Nos aseguramos de que el canvas solo se active en el menu de inicio
         if (SceneManager.GetActiveScene().buildIndex != 0)
         {
@@ -41,6 +38,7 @@ public class ConfigurationMenu : MonoBehaviour
             canvas.enabled = true;
         }
     }
+
     #endregion
     #region Funciones para definir paramentros del menu
     //Funcion para definir cuantos planos horizontales se quiere
@@ -71,14 +69,6 @@ public class ConfigurationMenu : MonoBehaviour
     public void IsOclusionActivated(bool activado)
     {
         oclusionActivada = activado;
-    }
-    #endregion
-    #region Cambio de escenas
-    public void CambiarEscenaDeJuego()
-    {
-        LoaderUtility.Deinitialize();
-        LoaderUtility.Initialize();
-        SceneManager.LoadScene(indiceNivelJuego);
     }
     #endregion
     #region Getters

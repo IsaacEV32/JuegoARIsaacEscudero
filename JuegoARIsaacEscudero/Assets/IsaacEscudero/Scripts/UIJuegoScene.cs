@@ -43,9 +43,6 @@ public class UIJuegoScene : MonoBehaviour
         {
             Destroy(this);
         }
-    }
-    private void Start()
-    {
         //Se consigue este componente
         uIPrep = GetComponent<UIForPreparingJuegoScene>();
         //Se comprueba que este canvas solo se active en la escena de juego,
@@ -104,16 +101,6 @@ public class UIJuegoScene : MonoBehaviour
     }
     #endregion
     #region Metodos
-    //Funcion para regresar al menu de inicio
-    public void RegresarAlMenu()
-    {
-        //Se detienen todos los audioSources
-        AudioManager.instance.StopAllAudioSources();
-        //Y se carga la escena del menu de inicio
-        LoaderUtility.Deinitialize();
-        LoaderUtility.Initialize();
-        SceneManager.LoadScene(indiceMenu);
-    }
     //Funcion para actualizar las gemas pilladas
     internal void ActualizarGemasPilladas()
     {
