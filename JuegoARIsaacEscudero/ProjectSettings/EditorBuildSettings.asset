@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/IsaacEscudero/Scenes/JuegoAR.unity
     guid: 9df43ac601425394197148c93a963bf1
+  - enabled: 0
+    path: Assets/IsaacEscudero/Scenes/New Scene.unity
+    guid: daeff3b372aaca8499e5cbedc299a143
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 2b4f0209200a2b34da7a3267c128e52b, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
